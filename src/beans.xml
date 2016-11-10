@@ -48,11 +48,20 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<!-- 
 		<property name="annotatedClasses">
 			<list>
 				<value>com.luke.spring.model.UserInfor</value>
 			</list>
 		</property>
+		-->
+		<!-- 自动扫描包 -->
+		 <property name="packagesToScan">
+			<list>
+				<value>com.luke.userregister.model</value>
+			</list>
+		</property>
+		
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -60,6 +69,11 @@
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
+	</bean>
+	
+	<!-- 使用hibernate的template模式开发 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
 	<!-- 使用Hibernate的事务管理器进行管理 -->
@@ -79,7 +93,8 @@
 		<tx:attributes>
 			<tx:method name="existUser" read-only="true" />
 			<tx:method name="listAllUser" read-only="true" />
-			<tx:method name="add*" />
+			<tx:method name="getUserById" read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 
