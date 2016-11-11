@@ -38,11 +38,8 @@ public class UserInforDaoImpl implements UserInforDao {
 	@Override
 	/* get all users count form DB */
 	public int countUsers() {
-		long count = (Long) hibernateTemplate.getSessionFactory()
-				.getCurrentSession().createQuery("select count('*') from UserInfor")
-				.uniqueResult();
-		
-		return Integer.parseInt(String.valueOf(count));
+		Long count = (Long) hibernateTemplate.find("select COUNT(*) from UserInfor").listIterator().next();;
+		return count.intValue();
 	}
 
 	

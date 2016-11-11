@@ -6,19 +6,23 @@
 <struts>
 	<!-- 在开发阶段，实现热部署，可以加入如下常量 -->
 	<constant name="struts.devMode" value="true"></constant>
-	
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 	
 	<package name="userInfor" extends="struts-default">
 		<action name="userInforAction" class="userInforAction">
 		
 			<result name="success">/registerSuccess.jsp</result>
 			<result name="fail">/registerFail.jsp</result>
+			<!-- 注意Java开发的项目URL区分大小写！！ -->
+			<!-- http://127.0.0.1:8080/UserRegister/userInforAction!list -->
 			<result name="list">/userlist.jsp</result>
+			<!-- http://127.0.0.1:8080/UserRegister/userInforAction!load?id=1 -->
 			<result name="load">/user.jsp</result>
-
+			
+			<result name="regist">/register.jsp</result>
 		</action>
 	</package>
-
-
+	
 </struts>
 	

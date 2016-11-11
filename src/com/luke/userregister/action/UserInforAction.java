@@ -1,5 +1,7 @@
 package com.luke.userregister.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
@@ -18,6 +20,8 @@ public class UserInforAction extends ActionSupport implements ModelDriven{
 	private UserInforPage uip = new UserInforPage();
 	private UserInforService userInforService;
 	private UserInfor userInfor;
+	private List<UserInfor> users;
+	private int countuser;
 	
 	//construction method, action beginning
 	public UserInforAction(){
@@ -36,6 +40,22 @@ public class UserInforAction extends ActionSupport implements ModelDriven{
 		userInforService.add(u);
 		return "success";
 	}
+	
+	public String regist() {
+		countuser = userInforService.countUser();
+		return "regist";
+	}
+	
+	public String load(){
+		this.userInfor = this.userInforService.getUserById(uip.getId());
+		return "load";
+	}
+	
+	public String list() {
+		this.users = this.userInforService.listAllUser();
+		return "list";
+	}
+	
 	
 	/*
 	 *  All set and get method
@@ -73,6 +93,22 @@ public class UserInforAction extends ActionSupport implements ModelDriven{
 
 	public void setUserInfor(UserInfor userInfor) {
 		this.userInfor = userInfor;
+	}
+
+	public List<UserInfor> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserInfor> users) {
+		this.users = users;
+	}
+
+	public int getCountuser() {
+		return countuser;
+	}
+
+	public void setCountuser(int countuser) {
+		this.countuser = countuser;
 	}
 	
 }

@@ -9,4 +9,5 @@ public interface UserInforService {
 	public boolean existUser(UserInfor u);
 	public List<UserInfor> listAllUser();
 	public UserInfor getUserById(int id);
+	public int countUser();
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>Register user</title>
+    <title>My JSP 'userlist.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,18 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-  	<!-- 以下执行了默认方法execute(),也可以省略.action -->
-    <form method="post" action="userInforAction.action">
-    	用户总数： <s:property value="countuser"/><br>
-    	用户名：<input type="text" name="username"><br>
-    	密码：<input type="password" name="userpws"><br>
-    	确认密码：<input type="password" name="userpws2"><br>
-    	
-    	<input type="submit" value="提交"/><br>
-    	<s:debug></s:debug><br>
-    </form>
+    	<s:property value="userInfor.username"/>
+    <s:debug></s:debug>
   </body>
 </html>

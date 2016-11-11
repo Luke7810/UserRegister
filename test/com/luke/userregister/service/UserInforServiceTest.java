@@ -71,4 +71,12 @@ public class UserInforServiceTest {
 			System.out.println("User List: "+u.getUsername());
 		}
 	}
+	
+	@Test
+	public void countUser() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		UserInforService uis = (UserInforService) ac.getBean("userInforService");
+		
+		System.out.println("user count is: "+ uis.countUser());
+	}
 }

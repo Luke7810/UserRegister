@@ -18,6 +18,11 @@ public class UserInforServiceImpl implements UserInforService {
 	
 
 	@Override
+	public int countUser() {
+		return userInforDao.countUsers();
+	}
+
+	@Override
 	public void add(UserInfor u) {
 		userInforDao.save(u);
 
