@@ -11,6 +11,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.luke.userregister.model.UserInfor;
 import com.luke.userregister.service.impl.UserInforServiceImpl;
 
+/*
+ * 一般测试的时候主要针对Service层和DAO层，由于Spring的引入，一般测试的都是Service层。
+ * 对于Struts的Action层测试，一般不在这里写测试用例，而是直接部署到Server上进行页面测试。
+ */
 public class UserInforServiceTest {
 
 	@Test

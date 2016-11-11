@@ -1,7 +1,78 @@
 package com.luke.userregister.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import javax.annotation.Resource;
 
-public class UserInforAction extends ActionSupport{
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import com.luke.userregister.model.UserInfor;
+import com.luke.userregister.service.UserInforService;
+import com.luke.userregister.web.vo.UserInforPage;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+@Component("userInforAction")
+@Scope("prototype")
+public class UserInforAction extends ActionSupport implements ModelDriven{
+	
+	private UserInforPage uip = new UserInforPage();
+	private UserInforService userInforService;
+	private UserInfor userInfor;
+	
+	//construction method, action beginning
+	public UserInforAction(){
+		System.out.println("useraction created!");
+	}
+	
+	@Override
+	public String execute() throws Exception {
+		System.out.println(uip.getUsername()+" : in execute method !");
+		UserInfor u = new UserInfor();
+		u.setUsername(uip.getUsername());
+		u.setUserpws(uip.getUserpws());
+		if(userInforService.existUser(u)){
+			return "fail";
+		}
+		userInforService.add(u);
+		return "success";
+	}
+	
+	/*
+	 *  All set and get method
+	 * */
+	@Override
+	public Object getModel() {
+		return uip;
+	}
+
+
+	public UserInforPage getUip() {
+		return uip;
+	}
+
+
+	public void setUip(UserInforPage uip) {
+		this.uip = uip;
+	}
+
+
+	public UserInforService getUserInforService() {
+		return userInforService;
+	}
+
+	@Resource(name="userInforService")
+	public void setUserInforService(UserInforService userInforService) {
+		this.userInforService = userInforService;
+	}
+
+
+	public UserInfor getUserInfor() {
+		return userInfor;
+	}
+
+
+	public void setUserInfor(UserInfor userInfor) {
+		this.userInfor = userInfor;
+	}
 	
 }

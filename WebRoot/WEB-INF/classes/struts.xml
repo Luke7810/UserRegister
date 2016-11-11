@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<!-- 在开发阶段，实现热部署，可以加入如下常量 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	
+	<package name="userInfor" extends="struts-default">
+		<action name="userInforAction" class="userInforAction">
+		
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="fail">/registerFail.jsp</result>
+			<result name="list">/userlist.jsp</result>
+			<result name="load">/user.jsp</result>
+
+		</action>
+	</package>
+
+
+</struts>
+	

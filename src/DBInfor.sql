@@ -1,3 +1,5 @@
+CREATE DATABASE `bbsluke`;
+
 CREATE TABLE `bbsluke`.`userinfor` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(200) NULL,
